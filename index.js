@@ -78,7 +78,13 @@ let drawBars = () => {
         .on('mouseover', (event, item) => {
             tooltip.transition().style('visibility', 'visible')
             tooltip.text(item[0])
-            document.querySelector('#tooltip').setAttribute('data-date', item[0])
+            tooltip.attr('data-date', item[0])
+            tooltip.style('left', (event.pageX + 10) + 'px')
+                   .style('top', (event.pageY - 28) + 'px')
+        })
+        .on('mousemove', (event, item) => {
+            tooltip.style('left', (event.pageX + 10) + 'px')
+                   .style('top', (event.pageY - 28) + 'px')
         })
         .on('mouseout', (event, item) => {
             tooltip.transition().style('visibility', 'hidden')
